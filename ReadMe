@@ -1,0 +1,45 @@
+# Rockets and Countries
+
+## Description
+
+This project will read in two data sets, collate them, print them to STDOUT, and
+write them to disk.  There are two data sets getting compared:
+- [rocket launch sites dataset](https://github.com/NattyBumppo/rocket-launch-history/blob/master/data/launch_sites.csv)
+- [countries dataset](https://developers.google.com/public-data/docs/canonical/countries_csv)
+The program will read in both data sets and ask the
+user to choose how to collate the data.  The options are to either print all of
+the witches accused in the same town where a UFO sighting occurred or to print
+all of the UFO sightings that occurred in the same month a witch was accused
+(regardless of year).
+
+## Getting Started
+### Dependencies
+
+* JDK 12
+* Maven
+
+### Installing
+
+1. Clone the project
+  ```bash
+  git clone https://github.com/bachmannsolutions/rocketsAndCountries.git
+  cd rocketsAndCountries
+  ```
+2. Run the project using maven
+  ```
+  mvn clean package exec:java -Dexec.mainClass=dev.rocketsAndCountries.App
+  ```
+
+## Help
+
+If you run into any problems using this project, please open an issue.
+
+## Authors
+
+* Adam Bachmann
+  [email](mailto:BachmannSolutions@gmail.com)
+
+## Acknowledgments
+
+*
+* [countries.csv](https://developers.google.com/public-data/docs/canonical/countries_csv)
