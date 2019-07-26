@@ -12,12 +12,12 @@ public class App {
 
     public static void main(String[] args) {
         //read and parse data
-        try {
-            CSVReader countriesReader = new CSVReader(new BufferedReader(new FileReader("countries.csv")));
-            CSVReader rocketsReader = new CSVReader(new BufferedReader(new FileReader("rocketLaunchSites.csv")));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            CSVReader countriesReader = new CSVReader(new BufferedReader(new FileReader("countries.csv")));
+//            CSVReader rocketsReader = new CSVReader(new BufferedReader(new FileReader("rocketLaunchSites.csv")));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
         //User screen, once app is ran
         System.out.println();
@@ -40,19 +40,43 @@ public class App {
 
             while ((line = br.readLine()) != null) {
                 country = line.split(csvSplit);
-                if(country[3].equals("United States")) {
-                    System.out.println("Did you know the initials for this country is " + country[0]);
+                if(country[0].equals("US")) {
+                    System.out.println("Did you know the initials, " + country[0] +  ", is for this country: " + country[3]);
                     System.out.println("The entire row consists of: ");
                     for(int i = 0; i < country.length; i++) {
                         System.out.print(country[i] + " ");
                     }
                     System.out.println("\n" +"\n");
-                    //return country[i] + " ";
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        //bump both data sets to find rocket launch sites in the United States
+        String csv2 = "rocketLaunchSites.csv";
+        String line2 = "";
+        String csvSplit2 = ",";
+        String[] country2 = new String[0];
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(csv2));
+            String headerLine = br.readLine();
+
+            while ((line2 = br.readLine()) != null) {
+                country2 = line2.split(csvSplit2);
+                if(country2[2].equals("United States")) {
+                    System.out.println("Did you know there is a rocket launch site in " + country2[2] +  ", is: " + country2[1]);
+                    System.out.println("The entire row consists of: ");
+                    for(int i = 0; i < country2.length; i++) {
+                        System.out.print(country2[i] + " ");
+                    }
+                    System.out.println("\n" +"\n");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         //writes output file once rocket sites and countries are compared
         try {

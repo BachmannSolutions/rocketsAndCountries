@@ -1,4 +1,4 @@
-SATCAT Designation,FullName,Country,Latitude,Longitude,Launch Log Abbreviated Designation
+SATCAT Designation,Rocket Launch Site,Country Name,Latitude,Longitude,Launch Log Abbreviated Designation
 AFETR,Kennedy Space Center/Cape Canaveral,United States,28.391139,-80.588343,CC
 AFWTR,Vandenberg Air Force Base,United States,34.4,-120.35,V
 CAS,Spaceport Gran Canaria,Spain,27.931944,-15.386667,"L-1011,GANC"
