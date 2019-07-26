@@ -6,18 +6,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.String;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class App {
     private static final String OUTPUT_LOCATION = "outputData.csv";
+    private static List<String> results = new ArrayList<>();
 
     public static void main(String[] args) {
-        //read and parse data
-//        try {
-//            CSVReader countriesReader = new CSVReader(new BufferedReader(new FileReader("countries.csv")));
-//            CSVReader rocketsReader = new CSVReader(new BufferedReader(new FileReader("rocketLaunchSites.csv")));
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
 
         //User screen, once app is ran
         System.out.println();
@@ -29,7 +26,7 @@ public class App {
         System.out.println("launch sites located in the United States.");
         System.out.println("\n");
 
-        //bump both data sets to find rocket launch sites in the United States
+        //isolate the countries to only pull the United States
         String csv = "countries.csv";
         String line = "";
         String csvSplit = ",";
@@ -53,7 +50,7 @@ public class App {
             e.printStackTrace();
         }
 
-        //bump both data sets to find rocket launch sites in the United States
+        //bump the pull above where you found the index for US and find rocket launch sites in the United States
         String csv2 = "rocketLaunchSites.csv";
         String line2 = "";
         String csvSplit2 = ",";
@@ -65,6 +62,7 @@ public class App {
             while ((line2 = br.readLine()) != null) {
                 country2 = line2.split(csvSplit2);
                 if(country2[2].equals("United States")) {
+                    results.add(Arrays.toString(country2));
                     System.out.println("Did you know there is a rocket launch site in " + country2[2] +  ", is: " + country2[1]);
                     System.out.println("The entire row consists of: ");
                     for(int i = 0; i < country2.length; i++) {
@@ -73,6 +71,7 @@ public class App {
                     System.out.println("\n" +"\n");
                 }
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -83,13 +82,14 @@ public class App {
             FileWriter fw = new FileWriter(OUTPUT_LOCATION);
             fw.write("Rocket Launch sites in United States" + "\n" +
                 "-----------------------------------------------------------------" + "\n");
-            fw.write("what goes here!!!!!!!!!!!!!");
-            fw.close();
+            for (String result : results) {
+                fw.write(result);
+            }            fw.close();
         } catch(Exception e){
             System.out.println(e);
         }
 
-        System.out.println("The file has been successfully loaded to your designated location");
+        System.out.println("The file has been successfully loaded to " + OUTPUT_LOCATION);
         System.out.println();
     }
 }
