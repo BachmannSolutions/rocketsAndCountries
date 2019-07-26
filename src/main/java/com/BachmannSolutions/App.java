@@ -1,6 +1,5 @@
 package com.BachmannSolutions;
 
-import com.opencsv.CSVReader;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -13,6 +12,7 @@ import java.util.List;
 public class App {
     private static final String OUTPUT_LOCATION = "outputData.csv";
     private static List<String> results = new ArrayList<>();
+    private static List<String> results2 = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -46,6 +46,7 @@ public class App {
                     System.out.println("\n" +"\n");
                 }
             }
+            results2.add(Arrays.toString(country));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -61,8 +62,8 @@ public class App {
 
             while ((line2 = br.readLine()) != null) {
                 country2 = line2.split(csvSplit2);
-                if(country2[2].equals("United States")) {
-                    results.add(Arrays.toString(country2));
+                results.add(Arrays.toString(country2));
+                if(country2[2].equals(country[0].equals("US"))) {
                     System.out.println("Did you know there is a rocket launch site in " + country2[2] +  ", is: " + country2[1]);
                     System.out.println("The entire row consists of: ");
                     for(int i = 0; i < country2.length; i++) {
